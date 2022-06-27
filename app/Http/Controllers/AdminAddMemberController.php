@@ -41,7 +41,7 @@ class AdminAddMemberController extends Controller
                     'email' =>   $data['email'],
                     'number' => $data['phone'],
                     'position' =>  $data['position'],
-                    'role' => 'employee',
+                    'role' => 'admin',
                     'stage' => 1,
                     'password' => Hash::make($request->password),
                 ]);
@@ -84,7 +84,7 @@ class AdminAddMemberController extends Controller
     {
         if ($request->ajax()) {
             $user = User::find($request->id);
-            if (filter_var($request->value, FILTER_SANITIZE_STRING) == null) {
+            if ($request->value == null) {
                 $msg = ucwords($request->option) . " shouldn't be empty";
                 Session::flash('error', $msg);
                 return View::make('partials/flash_message');
@@ -126,7 +126,7 @@ class AdminAddMemberController extends Controller
                 } else {
                     if ($user) {
                         $option = $request->option;
-                        $user->$option =  filter_var($request->value, FILTER_SANITIZE_STRING);
+                        $user->$option =  $request->value;
                         $user->save();
                         $msg = ucwords($request->option) . " updated successfully";
                         Session::flash('success', $msg);

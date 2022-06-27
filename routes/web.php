@@ -31,10 +31,3 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::match(['get', 'post'], '/edit-profile', 'AdminProfileController@edit')->name('edit_profile');
     Route::post('/change-profile-image', 'AdminProfileController@changeProfile')->name('change_profile_image');
 });
-//Employee Routes
-Route::prefix('employee')->name('employee.')->middleware(['auth', 'employee'])->group(function () {
-    //Dashboard Route
-    Route::match(['get', 'post'], '/dashboard', 'EmployeeDashboardController@view')->name('dashboard');
-    //Profile Route
-    Route::match(['get', 'post'], '/profile', 'EmployeeProfileController@view')->name('profile');
-});
