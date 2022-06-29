@@ -8,4 +8,7 @@ class TrackerInfo extends Model
 {
     protected $table = "trackerinfo";
     protected $fillable = ['info'];
+    protected $casts = [
+        'info' => 'array',
+    ];
 }

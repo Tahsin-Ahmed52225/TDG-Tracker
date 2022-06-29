@@ -9,13 +9,23 @@ class TrackerController extends Controller
 {
    public function update(Request $request){
            if($request->isMethod("POST")){
-            // $info = TrackerInfo::create([
-            //     "info"=> $request->info,
-            // ]);
-            // if($info){
-                return response()->json(["status"=>$request->info]);
-        //     }
-        //    }
-            }
+            $user_info = serialize($request->info);
+
+                $info = TrackerInfo::create([
+                    "info"=> $user_info,
+                ]);
+                if($info){
+                    return response()->json(["status"=>"updated"]);
+                }
+             }else{
+                return redirect("www.designtocodes.com");
+             }
+
+   }
+   public function deleteTrackInfo(Request $request){
+    if($request->isMethod("GET")){
+        TrackerInfo::whereNotNull('id')->delete();
+        return redirect()->back()->with('success', 'All Tracking info deleted');
+    }
    }
 }

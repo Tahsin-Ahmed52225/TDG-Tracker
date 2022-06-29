@@ -15,7 +15,7 @@ class Trackerinfo extends Migration
     {
         Schema::create('Trackerinfo', function (Blueprint $table) {
             $table->id();
-            $table->longText('info');
+            $table->text('info');
             $table->timestamps();
         });
     }
