@@ -73,14 +73,13 @@
                         <tbody>
                             @foreach ($info as $value)
                                 <tr class="text-center">
-                                    @php $data = unserialize($value->info) @endphp
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data["ip"]  }}</td>
-                                    <td>{{ $data["city"]  }}</td>
-                                    <td>{{ $data["country"]  }}</td>
-                                    <td>{{ $data["TemplateName"]  }}</td>
+                                    <td>{{ $value->IP  }}</td>
+                                    <td>{{ $value->city  }}</td>
+                                    <td>{{ $value->country  }}</td>
+                                    <td>{{ $value->TemplateName  }}</td>
                                     <td> {{ \Carbon\Carbon::parse($value->created_at)->format('d M Y') }} </td>
-                                    <th> <button class="btn btn-danger btn-sm"><i class="flaticon-delete icon-md"> </i></button></th>
+                                    <th> <button  class="btn btn-danger btn-sm delete-button" data-info={{ $value->id }}  data-toggle="modal" data-target="#delete"><i data-info={{ $value->id }} class="flaticon-delete icon-md"> </i></button></th>
 
                                 </tr>
                             @endforeach
@@ -91,11 +90,13 @@
             </div>
 
 @include("modals.delete_all")
+@include("modals.delete")
 
 @endsection
 
 @section("scripts")
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<script src="{{ asset("dev-assets/js/admin/dashboard.js") }}"></script>
 <script>
     $(document).ready(function() {
         $('#timesheetDatatable').DataTable();

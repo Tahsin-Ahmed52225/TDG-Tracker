@@ -7,8 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class TrackerInfo extends Model
 {
     protected $table = "trackerinfo";
-    protected $fillable = ['info'];
-    protected $casts = [
-        'info' => 'array',
-    ];
+    protected $fillable = ['IP','ActiveDomain','TemplateName','browserName','browserVersion','city','country','continent'];
 }

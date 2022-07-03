@@ -15,7 +15,14 @@ class Trackerinfo extends Migration
     {
         Schema::create('Trackerinfo', function (Blueprint $table) {
             $table->id();
-            $table->text('info');
+            $table->text('IP')->unique()->comment("User public IP");
+            $table->text("ActiveDomain")->nullable()->comment("User Active Domain");
+            $table->text("TemplateName")->comment("Pirated Template");
+            $table->text("browserName")->comment("User Broswer Name");
+            $table->text("browserVersion")->comment("User Broswer Version");
+            $table->text("city")->comment("User city");
+            $table->text("country")->comment("User country");
+            $table->text("continent")->comment("User continent");
             $table->timestamps();
         });
     }

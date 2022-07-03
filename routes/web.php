@@ -33,4 +33,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
     //Tracker Info routes
     Route::get('/delete-tracker-info', 'TrackerController@deleteTrackInfo')->name('delete_track_info');
+    Route::get('/delete-info/', 'TrackerController@deleteSingleinfo')->name('delete_info');
+
 });
