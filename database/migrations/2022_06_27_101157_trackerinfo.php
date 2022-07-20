@@ -23,6 +23,7 @@ class Trackerinfo extends Migration
             $table->text("city")->comment("User city");
             $table->text("country")->comment("User country");
             $table->text("continent")->comment("User continent");
+            $table->boolean('stage')->default(0)->comment("Stage of the template");
             $table->timestamps();
         });
     }

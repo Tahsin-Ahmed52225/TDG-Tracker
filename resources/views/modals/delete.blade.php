@@ -12,7 +12,7 @@
           Are you sure you want to remove the tracker info
         </div>
         <div class="modal-footer">
-          <a id="delete_button" href="#" type="button" class="btn btn-danger">Yes, I'm</a>
+          <a id="delete_button" data-dismiss="modal" href="#" type="button" class="btn btn-danger">Yes, I'm</a>
         </div>
       </div>
     </div>

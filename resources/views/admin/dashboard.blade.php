@@ -79,7 +79,10 @@
                                     <td>{{ $value->country  }}</td>
                                     <td>{{ $value->TemplateName  }}</td>
                                     <td> {{ \Carbon\Carbon::parse($value->created_at)->format('d M Y') }} </td>
-                                    <th> <button  class="btn btn-danger btn-sm delete-button" data-info={{ $value->id }}  data-toggle="modal" data-target="#delete"><i data-info={{ $value->id }} class="flaticon-delete icon-md"> </i></button></th>
+                                    <th>
+                                        <button  class="btn @if($value->stage == 0) btn-success @else btn-danger @endif btn-sm lock-button" data-info={{ $value->id }} data-stage={{ $value->stage }}  data-toggle="modal" data-target="#lock"><i data-info={{ $value->id }} data-stage={{ $value->stage }} class="flaticon-lock icon-md"> </i></button>
+                                        <button  class="btn btn-danger btn-sm delete-button" data-info={{ $value->id }}  data-toggle="modal" data-target="#delete"><i data-info={{ $value->id }} class="flaticon-delete icon-md"> </i></button>
+                                    </th>
 
                                 </tr>
                             @endforeach
@@ -91,6 +94,7 @@
 
 @include("modals.delete_all")
 @include("modals.delete")
+@include("modals.lock")
 
 @endsection
 
