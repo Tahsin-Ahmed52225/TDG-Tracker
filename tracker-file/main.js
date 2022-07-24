@@ -5,7 +5,7 @@ var user_info = {};
 
 function sendingData(data){
  
-    fetch('https://tracker.thedevgarden.icu/api/update-info' ,{
+    fetch('http://127.0.0.1:8000/api/update-info' ,{
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
